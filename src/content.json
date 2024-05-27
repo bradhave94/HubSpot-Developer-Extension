@@ -25,8 +25,8 @@
 			"url": "https://app.hubspot.com/settings/HUB_ID/website/pages/all-domains/page-templates"
 		},
 		{
-			"label": "URL Redirects",
-			"url": "https://app.hubspot.com/settings/HUB_ID/domains/url-redirects"
+			"label": "Domains",
+			"url": "https://app.hubspot.com/settings/HUB_ID/domains"
 		},
 		{
 			"label": "GraphiQL",

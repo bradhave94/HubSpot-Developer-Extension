@@ -240,12 +240,12 @@ if (~tabUrl.indexOf(appUrl)) {
 			return template.content;
 		}
 
-		const html = `<li id="ext-dev-menu-wrapper" role="none" class="VerticalNavMenuItem__StyledLi-oft1jq-0 exxAFl">
+		const html = `<li id="ext-dev-menu-wrapper" role="none">
 			<button id="dev-branch-toggle" data-test-id="dev-branch-toggle" aria-expanded="false" aria-controls="dev-branch-content" role="menuitem" aria-haspopup="true" data-menu-item-level="primary" data-menu-item-group="dev-branch">
 				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff" x="0" y="0" viewBox="0 0 32 32" xml:space="preserve" width="18px" height="18px"><title>Settings</title><path d="M27.16,11.53h-2.4c-.2-.74-.46-1.38-.79-1.99l.02,.05,1.69-1.69c.38-.36,.61-.87,.61-1.43s-.23-1.07-.61-1.43l-.69-.72c-.36-.37-.87-.61-1.43-.61s-1.07,.23-1.43,.61l-1.72,1.69c-.54-.3-1.16-.56-1.81-.75l-.06-.02V2.83c0-1.1-.9-2-2-2h-1c-1.11,0-2,.9-2,2v2.4c-.74,.2-1.39,.46-2,.79l.05-.02-1.69-1.69c-.36-.38-.88-.62-1.45-.62s-1.09,.24-1.45,.62h0s-.69,.69-.69,.69c-.38,.36-.61,.87-.61,1.43s.23,1.07,.61,1.43l1.69,1.72c-.3,.54-.56,1.16-.75,1.81l-.02,.06h-2.39c-1.1,0-2,.9-2,2v1.07c0,1.11,.89,2,2,2h0s2.4,0,2.4,0c.2,.71,.46,1.33,.78,1.92l-.02-.05-1.69,1.69c-.38,.36-.61,.87-.61,1.43s.23,1.07,.61,1.43l.72,.72c.36,.38,.87,.61,1.43,.61s1.07-.23,1.43-.61l1.69-1.68c.53,.3,1.16,.56,1.81,.75l.06,.02v2.4c0,1.1,.9,2,2,2h1c1.1,0,2-.9,2-2v-2.4c.74-.2,1.39-.46,2-.79l-.05,.02,1.69,1.69c.36,.38,.87,.61,1.43,.61s1.07-.23,1.43-.61l.72-.72c.38-.36,.61-.87,.61-1.44s-.23-1.07-.61-1.43l-1.69-1.7c.3-.54,.56-1.16,.75-1.81l.02-.06h2.4c1.1,0,2-.9,2-2v-1c0-1.11-.9-2-2-2Zm-5.09,2.98c-.05,.58-.18,1.12-.36,1.62-.05,.14-.11,.27-.17,.41-.62,1.33-1.67,2.38-2.96,2.98l-.04,.02-.42,.17c-.47,.18-1.02,.31-1.59,.36h-.02s-1.02,0-1.02,0c-.58-.05-1.12-.18-1.62-.36l-.41-.17c-1.33-.62-2.38-1.67-2.98-2.96l-.02-.04c-.06-.14-.12-.28-.17-.42-.18-.47-.31-1.02-.36-1.59v-.02s0-.51,0-.51v-.51c.03-.37,.09-.71,.17-1.04,.06-.24,.13-.43,.2-.62v.04c.04-.14,.1-.28,.16-.42,.62-1.33,1.67-2.38,2.96-2.98l.04-.02,.42-.17c.47-.18,1.02-.31,1.59-.36h.02s1.02,0,1.02,0c.58,.05,1.12,.18,1.62,.36l.41,.17c1.33,.62,2.38,1.67,2.98,2.96l.02,.04c.06,.14,.12,.28,.17,.42,.18,.47,.31,1.02,.36,1.59v.02s0,1.02,0,1.02Z"></path><path d="M16,10.07c-2.17,0-3.93,1.76-3.93,3.93s1.76,3.93,3.93,3.93,3.93-1.76,3.93-3.93-1.76-3.93-3.93-3.93Z"></path></svg>
 				<span>Developer Extension</span>
 			</button>
-			<ul role="menu" id="dev-branch-content" aria-hidden="false" aria-labelledby="dev-branch-toggle">
+			<ul class="kxVDBO" role="menu" id="dev-branch-content" aria-hidden="false" aria-labelledby="dev-branch-toggle">
 
 			</ul>
 		</li>`;
@@ -254,10 +254,10 @@ if (~tabUrl.indexOf(appUrl)) {
 
 		const vnm = document.querySelector('#hs-vertical-nav');
 		const navLinks = vnm.querySelector('ul');
-		const firstChild = navLinks.lastElementChild;
+		const firstChild = navLinks.firstElementChild;
 
 		while (sanitizedContent.firstChild) {
-			firstChild.insertAdjacentElement('afterend', sanitizedContent.firstChild);
+			firstChild.insertAdjacentElement('beforebegin', sanitizedContent.firstChild);
 		}
 
 		// Add event listener for toggling the menu
@@ -349,6 +349,69 @@ if (~tabUrl.indexOf(appUrl)) {
 			text-decoration: none;
 			color: rgb(255, 255, 255);
 			background: rgb(81, 111, 144) !important;
+		}
+		#ext-dev-menu-wrapper {
+			margin: 0px 12px;
+			border-radius: 6px;
+		}
+		#ext-dev-menu-wrapper > button {
+			display: flex;
+			font-weight: 400;
+			flex-direction: row;
+			-webkit-box-pack: start;
+			justify-content: start;
+			-webkit-box-align: center;
+			align-items: center;
+			flex-shrink: 0;
+			-webkit-font-smoothing: auto;
+			width: 100%;
+			border: 0px;
+			border-radius: 6px;
+			min-height: 52px;
+			background: none;
+			position: relative;
+			padding: 14px 12px;
+		}
+		#ext-dev-menu-wrapper > button svg {
+			fill: rgb(223, 227, 235);
+			width: 16px;
+			min-width: 16px;
+			margin-right: 8px;
+			margin-top: -4px;
+		}
+		#ext-dev-menu-wrapper > button span {
+			color: rgb(223, 227, 235);
+			font-weight: 400;
+			text-align: left;
+			font-size: 14px;
+			line-height: normal;
+			display: block;
+			padding: 0px;
+			overflow-wrap: break-word;
+			hyphens: manual;
+		}
+		#ext-dev-menu-wrapper .isHighlighted > button::after,
+		#ext-dev-menu-wrapper:not(.isHighlighted) > button:hover::after {
+			color: rgb(245, 248, 250);
+			position: absolute;
+			opacity: 1;
+			content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11.5 21.1' %3E%3Cpath d='M2 2l7.5 8.5-7.4 8.6' fill='none' stroke='%23f5f8fa' stroke-linecap='round' stroke-linejoin='round' stroke-width='4'%3E%3C/path%3E%3C/svg%3E");
+			width: 6px;
+			height: 12px;
+			right: 12px;
+		}
+		#ext-dev-menu-wrapper > button::before {
+			content: "";
+			position: absolute;
+			inset: 10% 0px;
+			background: rgb(66, 91, 118);
+			border-radius: 6px;
+			opacity: 0;
+			z-index: -1;
+		}
+		#ext-dev-menu-wrapper > button:hover::before,
+		#ext-dev-menu-wrapper.isHighlighted > button::before {
+			opacity: 1;
 		}`
 		devMenuUL.appendChild(style);
 	}
@@ -376,11 +439,10 @@ if (~tabUrl.indexOf(appUrl)) {
 				generateDevMenu(hubId.pop());
 			});
 			waitForEl('#hs-vertical-nav', function () {
-
-				const navLinks = document.querySelectorAll('#hs-vertical-nav a');
+				const navLinks = document.querySelectorAll('#hs-vertical-nav a, #hs-global-toolbar a');
 				for (const link of navLinks) {
 					const urlSegments = link.href.split('/');
-					const targetIndex = urlSegments.findIndex(segment => segment === 'developer-home' || segment === 'marketplace-providers');
+					const targetIndex = urlSegments.findIndex(segment => segment === 'developer-home' || segment === 'marketplace-providers' || segment === 'user-guide'|| segment === 'reports-dashboard'|| segment === 'website'|| segment === 'pricing');
 					if (targetIndex !== -1 && targetIndex + 1 < urlSegments.length) {
 						const entryAfterTarget = urlSegments[targetIndex + 1];
 						if (!isNaN(parseInt(entryAfterTarget, 10))) {
